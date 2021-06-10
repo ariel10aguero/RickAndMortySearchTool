@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rickandmortyapi.data.model.CharacterResponse
+import com.example.rickandmortyapi.data.model.EpisodeResponse
 import com.example.rickandmortyapi.data.model.LocationResponse
 import com.example.rickandmortyapi.domain.MainRepository
 import com.example.rickandmortyapi.util.DataState
@@ -26,6 +27,10 @@ class MainViewModel @Inject constructor(private val repo: MainRepository) : View
     val locationState: LiveData<DataState<LocationResponse>>
         get() = _locationState
 
+    private val _episodeState: MutableLiveData<DataState<EpisodeResponse>> = MutableLiveData()
+    val episodeState: LiveData<DataState<EpisodeResponse>>
+        get() = _episodeState
+
 
 
     fun getCharacter(name: String? = null, status: String? = null, species: String? = null, type: String? = null, gender: String? = null) {
@@ -44,5 +49,12 @@ class MainViewModel @Inject constructor(private val repo: MainRepository) : View
         }
     }
 
+    fun getEpisode(name: String? = null, episode: String? = null){
+        viewModelScope.launch {
+            repo.getEpisode(name, episode).onEach { episode ->
+                _episodeState.value = episode
+            }.launchIn(viewModelScope)
+        }
+    }
 
 }

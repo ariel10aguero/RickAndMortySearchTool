@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.rickandmortyapi.data.model.CharacterResponse
+import com.example.rickandmortyapi.data.model.EpisodeResponse
 import com.example.rickandmortyapi.data.model.LocationResponse
 import com.example.rickandmortyapi.ui.MainViewModel
 import com.example.rickandmortyapi.util.DataState
@@ -23,8 +24,11 @@ class MainActivity : AppCompatActivity(){
         val viewChar = findViewById<TextView>(R.id.characterTxt)
 
         viewModel.getLocation(type = "Asteroid")
+        viewModel.getEpisode(episode = "S04E10")
+
         setUpCharacterObserver()
         setUpLocationObserver()
+        setUpEpisodeObserver()
 
     }
 
@@ -61,6 +65,21 @@ class MainActivity : AppCompatActivity(){
         })
     }
 
+    private fun setUpEpisodeObserver(){
+        viewModel.episodeState.observe(this, Observer {episodeState ->
+            when(episodeState){
+                is DataState.Loading -> {
+                    Log.d("loading", "Loading Episode")
+                }
+                is DataState.Success<EpisodeResponse> -> {
+                    Log.d("episode", "${episodeState.data.results}")
+                }
+                is DataState.Error -> {
+                    Log.d("error", "${episodeState.exception}")
+                }
+            }
+        })
+    }
 
 
 }

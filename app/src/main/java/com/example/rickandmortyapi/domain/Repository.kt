@@ -1,6 +1,7 @@
 package com.example.rickandmortyapi.domain
 
 import com.example.rickandmortyapi.data.model.CharacterResponse
+import com.example.rickandmortyapi.data.model.EpisodeResponse
 import com.example.rickandmortyapi.data.model.LocationResponse
 import com.example.rickandmortyapi.util.DataState
 import kotlinx.coroutines.flow.Flow
@@ -19,5 +20,6 @@ interface Repository {
                             dimension: String?): Flow<DataState<LocationResponse>>
 
 
+    suspend fun getEpisode(name: String?, episode: String?): Flow<DataState<EpisodeResponse>>
 
 }
