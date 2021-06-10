@@ -1,6 +1,7 @@
 package com.example.rickandmortyapi.data.remote
 
 import com.example.rickandmortyapi.data.model.CharacterResponse
+import com.example.rickandmortyapi.data.model.LocationResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -16,6 +17,14 @@ interface WebService {
            @Query("gender") gender: String?,
 
    ): CharacterResponse
+
+   @GET("location/")
+   suspend fun getLocation(
+           @Query ("name") name: String?,
+           @Query("type") type: String?,
+           @Query("dimension") dimension: String?,
+
+   ): LocationResponse
 
 
 }

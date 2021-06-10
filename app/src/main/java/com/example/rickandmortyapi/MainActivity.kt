@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.rickandmortyapi.data.model.CharacterResponse
+import com.example.rickandmortyapi.data.model.LocationResponse
 import com.example.rickandmortyapi.ui.MainViewModel
 import com.example.rickandmortyapi.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,8 +22,9 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
         val viewChar = findViewById<TextView>(R.id.characterTxt)
 
-        viewModel.getCharacter("annie")
+        viewModel.getLocation(type = "Asteroid")
         setUpCharacterObserver()
+        setUpLocationObserver()
 
     }
 
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity(){
                     Log.d("loading", "Loading Character")
                 }
                 is DataState.Success<CharacterResponse> -> {
-                    Log.d("success", "${characterState.data.results}")
+                    Log.d("character", "${characterState.data.results}")
                 }
                 is DataState.Error -> {
                     Log.d("error", "${characterState.exception}")
@@ -41,4 +43,24 @@ class MainActivity : AppCompatActivity(){
             }
         })
     }
+
+    private fun setUpLocationObserver(){
+        viewModel.locationState.observe(this, Observer {locationState ->
+            when(locationState){
+                is DataState.Loading -> {
+                    Log.d("loading", "Loading Location")
+
+                }
+                is DataState.Success<LocationResponse> -> {
+                    Log.d("location", "${locationState.data.results}")
+                }
+                is DataState.Error -> {
+                    Log.d("error", "${locationState.exception}")
+                }
+            }
+        })
+    }
+
+
+
 }

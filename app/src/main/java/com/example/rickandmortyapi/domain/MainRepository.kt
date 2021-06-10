@@ -1,6 +1,7 @@
 package com.example.rickandmortyapi.domain
 
 import com.example.rickandmortyapi.data.model.CharacterResponse
+import com.example.rickandmortyapi.data.model.LocationResponse
 import com.example.rickandmortyapi.data.remote.WebService
 import com.example.rickandmortyapi.util.DataState
 import kotlinx.coroutines.flow.Flow
@@ -18,7 +19,8 @@ class MainRepository @Inject constructor (
                                      status: String?,
                                      species: String?,
                                      type: String?,
-                                     gender: String?): Flow<DataState<CharacterResponse>> = flow{
+                                     gender: String?
+   ): Flow<DataState<CharacterResponse>> = flow{
        emit(DataState.Loading)
        try {
            val character = networkData.getCharacter(name, status, species, type, gender)
@@ -27,5 +29,22 @@ class MainRepository @Inject constructor (
        catch (e: Exception){
            emit(DataState.Error(e))
        }
+    }
+
+
+    override suspend fun getLocation(
+        name: String?,
+        type: String?,
+        dimension: String?
+    ): Flow<DataState<LocationResponse>> = flow{
+        emit(DataState.Loading)
+        try {
+            val location = networkData.getLocation(name, type, dimension)
+            emit(DataState.Success(location))
+        }
+        catch (e: Exception){
+            emit(DataState.Error(e))
+        }
+
     }
 }
