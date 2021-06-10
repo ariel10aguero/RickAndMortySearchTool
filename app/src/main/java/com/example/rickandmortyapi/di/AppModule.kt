@@ -1,6 +1,9 @@
 package com.example.rickandmortyapi.di
 
+import com.example.rickandmortyapi.data.remote.WebService
+import com.example.rickandmortyapi.domain.MainRepository
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,9 +19,26 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideGson(): Gson {
+        return GsonBuilder()
+            .excludeFieldsWithoutExposeAnnotation()
+            .create()
+    }
 
-    fun provideRetrofit() = Retrofit.Builder()
-        .baseUrl("https://rickandmortyapi.com/api/")
-        .addConverterFactory(GsonConverterFactory.create()).build()
+    @Provides
+    @Singleton
+    fun provideRetrofit(gson: Gson): WebService {
+        return Retrofit.Builder()
+            .baseUrl("https://rickandmortyapi.com/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(WebService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMainRepository(networkData: WebService): MainRepository{
+        return MainRepository(networkData)
+    }
 
 }
