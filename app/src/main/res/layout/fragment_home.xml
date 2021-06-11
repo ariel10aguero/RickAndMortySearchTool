@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
 
-    <androidx.appcompat.widget.SearchView
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/characterSearchView"
         android:layout_width="285dp"
         android:layout_height="43dp"
@@ -36,6 +36,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_searchview"
+        android:drawableLeft="@drawable/ic_baseline_search"
+        android:drawablePadding="6dp"
+        android:paddingLeft="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchCharacterTxt" />
 
@@ -120,7 +123,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/characterNameBtn" />
 
-    <androidx.appcompat.widget.SearchView
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/locationSearchView"
         android:layout_width="285dp"
         android:layout_height="43dp"
@@ -128,6 +131,10 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_searchview"
+        android:drawableStart="@drawable/ic_baseline_search"
+        android:drawableLeft="@drawable/ic_baseline_search"
+        android:drawablePadding="4dp"
+        android:paddingLeft="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchLocationTxt" />
 
@@ -198,18 +205,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationNameBtn" />
 
-    <androidx.appcompat.widget.SearchView
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/episodeSearchView"
         android:layout_width="285dp"
         android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_searchview"
+        android:drawableLeft="@drawable/ic_baseline_search"
+        android:drawablePadding="6dp"
+        android:paddingLeft="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchEpisode">
 
-    </androidx.appcompat.widget.SearchView>
+    </androidx.appcompat.widget.AppCompatEditText>
 
     <com.google.android.material.button.MaterialButton
 

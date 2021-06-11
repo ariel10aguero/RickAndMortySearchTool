@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -48,9 +47,6 @@ class HomeFragment : Fragment() {
         setUpCharacterObserver()
         setUpLocationObserver()
         setUpEpisodeObserver()
-
-        setCharacterSearchView()
-
         binding.characterSearchBtn.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
         }
@@ -102,20 +98,6 @@ class HomeFragment : Fragment() {
                 is DataState.Error -> {
                     Log.d("error", "${episodeState.exception}")
                 }
-            }
-        })
-    }
-
-    private fun setCharacterSearchView(){
-        binding.characterSearchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                view
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
             }
         })
     }
