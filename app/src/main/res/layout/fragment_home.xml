@@ -8,7 +8,7 @@
     tools:context=".ui.HomeFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/titleTxt"
         android:layout_width="382dp"
         android:layout_height="68dp"
         android:layout_marginTop="16dp"
@@ -26,10 +26,10 @@
         android:layout_marginTop="56dp"
         android:text="Search Character"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
 
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/characterSearchView"
         android:layout_width="285dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
@@ -41,7 +41,7 @@
 
     <com.google.android.material.button.MaterialButton
 
-        android:id="@+id/button6"
+        android:id="@+id/characterSearchBtn"
         android:layout_width="70dp"
         android:layout_height="42dp"
         android:layout_marginStart="4dp"
@@ -51,14 +51,14 @@
         android:textColor="@color/black"
         android:textSize="8sp"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/searchView"
+        app:layout_constraintBottom_toBottomOf="@+id/characterSearchView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="@+id/searchView" />
+        app:layout_constraintStart_toEndOf="@+id/characterSearchView"
+        app:layout_constraintTop_toTopOf="@+id/characterSearchView" />
 
 
     <Button
-        android:id="@+id/characterName"
+        android:id="@+id/characterNameBtn"
         android:layout_width="86dp"
         android:layout_height="36dp"
         android:layout_marginTop="16dp"
@@ -66,40 +66,40 @@
         android:text="name"
         android:textColor="@color/yellow"
         android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/characterStatus"
+        app:layout_constraintEnd_toStartOf="@+id/characterStatusBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/characterSearchView" />
 
     <Button
-        android:id="@+id/characterStatus"
+        android:id="@+id/characterStatusBtn"
         android:layout_width="86dp"
         android:layout_height="36dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_searchview"
         android:text="status"
         android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/characterSpecie"
+        app:layout_constraintEnd_toStartOf="@+id/characterSpecieBtn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/characterName"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintStart_toEndOf="@+id/characterNameBtn"
+        app:layout_constraintTop_toBottomOf="@+id/characterSearchView" />
 
     <Button
-        android:id="@+id/characterSpecie"
+        android:id="@+id/characterSpecieBtn"
         android:layout_width="86dp"
         android:layout_height="36dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_searchview"
         android:text="Specie"
         android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/characterGender"
+        app:layout_constraintEnd_toStartOf="@+id/characterGenderBtn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/characterStatus"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintStart_toEndOf="@+id/characterStatusBtn"
+        app:layout_constraintTop_toBottomOf="@+id/characterSearchView" />
 
     <Button
-        android:id="@+id/characterGender"
+        android:id="@+id/characterGenderBtn"
         android:layout_width="86dp"
         android:layout_height="36dp"
         android:layout_marginTop="16dp"
@@ -108,8 +108,8 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/characterSpecie"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintStart_toEndOf="@+id/characterSpecieBtn"
+        app:layout_constraintTop_toBottomOf="@+id/characterSearchView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

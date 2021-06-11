@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(){
         val view = binding.root
         setContentView(view)
 
-        viewModel.getLocation(type = "Asteroid")
+        viewModel.getLocation(type = "io")
         viewModel.getEpisode(episode = "S04E10")
 
         setUpCharacterObserver()
@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity(){
         setUpEpisodeObserver()
 
     }
+
+
+
 
     private fun setUpCharacterObserver(){
         viewModel.characterState.observe(this, Observer {characterState ->
@@ -55,14 +58,14 @@ class MainActivity : AppCompatActivity(){
         viewModel.locationState.observe(this, Observer {locationState ->
             when(locationState){
                 is DataState.Loading -> {
-                    Log.d("loading", "Loading Location")
+                    Log.d("loading Location", "Loading Location")
 
                 }
                 is DataState.Success<LocationResponse> -> {
                     Log.d("location", "${locationState.data.results}")
                 }
                 is DataState.Error -> {
-                    Log.d("error", "${locationState.exception}")
+                    Log.d("errorLocation", "${locationState.exception}")
                 }
             }
         })
