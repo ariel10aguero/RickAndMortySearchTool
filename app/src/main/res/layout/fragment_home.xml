@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/characterSearchView"
         android:layout_width="285dp"
         android:layout_height="43dp"
@@ -120,7 +120,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/characterNameBtn" />
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/locationSearchView"
         android:layout_width="285dp"
         android:layout_height="43dp"
@@ -198,7 +198,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationNameBtn" />
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/episodeSearchView"
         android:layout_width="285dp"
         android:layout_height="43dp"
@@ -209,7 +209,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchEpisode">
 
-    </SearchView>
+    </androidx.appcompat.widget.SearchView>
 
     <com.google.android.material.button.MaterialButton
 

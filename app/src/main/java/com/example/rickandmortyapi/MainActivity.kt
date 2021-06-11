@@ -2,16 +2,10 @@ package com.example.rickandmortyapi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
+
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
-import com.example.rickandmortyapi.data.model.CharacterResponse
-import com.example.rickandmortyapi.data.model.EpisodeResponse
-import com.example.rickandmortyapi.data.model.LocationResponse
 import com.example.rickandmortyapi.databinding.ActivityMainBinding
 import com.example.rickandmortyapi.ui.MainViewModel
-import com.example.rickandmortyapi.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
