@@ -7,6 +7,17 @@
     android:padding="8dp"
     tools:context=".ui.HomeFragment">
 
+    <TextView
+        android:id="@+id/searchLocationTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="56dp"
+        android:text="Search Location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/characterNameBtn" />
+
     <ImageView
         android:id="@+id/titleTxt"
         android:layout_width="382dp"
@@ -18,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/searchCharacterTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -37,7 +48,7 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_searchview"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+        app:layout_constraintTop_toBottomOf="@+id/searchCharacterTxt" />
 
     <com.google.android.material.button.MaterialButton
 
@@ -103,13 +114,78 @@
         android:layout_width="86dp"
         android:layout_height="36dp"
         android:layout_marginTop="16dp"
-        android:text="Gender"
         android:background="@drawable/bg_searchview"
+        android:text="Gender"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/characterSpecieBtn"
         app:layout_constraintTop_toBottomOf="@+id/characterSearchView" />
+
+    <SearchView
+        android:id="@+id/locationSearchView"
+        android:layout_width="285dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_searchview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchLocationTxt" />
+
+
+    <com.google.android.material.button.MaterialButton
+
+        android:id="@+id/locationSearchBtn"
+        android:layout_width="70dp"
+        android:layout_height="42dp"
+        android:backgroundTint="@color/yellow"
+        android:text="search"
+        android:textColor="@color/black"
+        android:textSize="8sp"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/locationSearchView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/locationSearchView"
+        app:layout_constraintTop_toTopOf="@+id/locationSearchView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/locationNameBtn"
+        android:layout_width="86dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_searchview"
+        android:text="name"
+        android:textColor="@color/yellow"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/characterNameBtn"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/characterNameBtn"
+        app:layout_constraintTop_toBottomOf="@+id/locationSearchView" />
+
+    <Button
+        android:id="@+id/locationTypeBtn"
+        android:layout_width="86dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_searchview"
+        android:text="Type"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/characterStatusBtn"
+        app:layout_constraintStart_toStartOf="@+id/characterStatusBtn"
+        app:layout_constraintTop_toBottomOf="@+id/locationSearchView" />
+
+    <Button
+        android:id="@+id/locationDimensionBtn"
+        android:layout_width="110dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_searchview"
+        android:text="Dimension"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/characterSpecieBtn"
+        app:layout_constraintTop_toBottomOf="@+id/locationSearchView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
