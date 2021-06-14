@@ -37,7 +37,6 @@ class HomeFragment : Fragment() {
         return view
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,6 +52,16 @@ class HomeFragment : Fragment() {
 
     }
 
+    private fun setSearchButtons() {
+        binding.apply {
+            characterSearchBtn.setOnClickListener {
+                val userInput = characterSearchView.text.toString()
+                viewModel.getCharacter()
+            }
+        }
+
+    }
+
     private fun setUpCharacterObserver(){
         viewModel.characterState.observe(viewLifecycleOwner, Observer {characterState ->
             when(characterState){
@@ -60,6 +69,8 @@ class HomeFragment : Fragment() {
                     Log.d("loading", "Loading Character")
                 }
                 is DataState.Success<CharacterResponse> -> {
+                    // Navigate
+
                     Log.d("character", "${characterState.data.results}")
                 }
                 is DataState.Error -> {
@@ -101,6 +112,5 @@ class HomeFragment : Fragment() {
             }
         })
     }
-
 
 }
