@@ -35,10 +35,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
-        android:hint="For example: Summer"
         android:background="@drawable/bg_searchview"
         android:drawableLeft="@drawable/ic_baseline_search"
         android:drawablePadding="6dp"
+        android:hint="For example: Summer"
         android:paddingLeft="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchCharacterTxt" />
@@ -58,60 +58,53 @@
         app:layout_constraintStart_toEndOf="@+id/characterSearchView"
         app:layout_constraintTop_toTopOf="@+id/characterSearchView" />
 
-
-    <Button
-        android:id="@+id/characterNameBtn"
-        android:layout_width="86dp"
-        android:layout_height="36dp"
+    <RadioGroup
+        android:id="@+id/characterRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_searchview"
-        android:text="name"
-        android:textColor="@color/yellow"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/characterStatusBtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/characterSearchView" />
-
-    <Button
-        android:id="@+id/characterStatusBtn"
-        android:layout_width="86dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_searchview"
-        android:text="status"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/characterSpecieBtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/characterNameBtn"
-        app:layout_constraintTop_toBottomOf="@+id/characterSearchView" />
-
-    <Button
-        android:id="@+id/characterSpecieBtn"
-        android:layout_width="86dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_searchview"
-        android:text="Specie"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/characterGenderBtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/characterStatusBtn"
-        app:layout_constraintTop_toBottomOf="@+id/characterSearchView" />
-
-    <Button
-        android:id="@+id/characterGenderBtn"
-        android:layout_width="86dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_searchview"
-        android:text="Gender"
-        android:textSize="12sp"
+        android:orientation="horizontal"
+        android:checkedButton="@id/characterNameBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/characterSpecieBtn"
-        app:layout_constraintTop_toBottomOf="@+id/characterSearchView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/characterSearchView">
+
+        <RadioButton
+            android:id="@+id/characterNameBtn"
+            android:layout_width="86dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_searchview"
+            android:text="Name"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/characterStatusBtn"
+            android:layout_width="86dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_searchview"
+            android:text="status"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/characterSpecieBtn"
+            android:layout_width="86dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_searchview"
+            android:text="Specie"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/characterGenderBtn"
+            android:layout_width="86dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_searchview"
+            android:text="Gender"
+            android:textSize="12sp" />
+
+    </RadioGroup>
+
 
     <TextView
         android:id="@+id/searchLocationTxt"
@@ -122,7 +115,7 @@
         android:layout_marginTop="56dp"
         android:text="Search Location"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/characterNameBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/characterRadioGroup" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/locationSearchView"
@@ -131,11 +124,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
-        android:hint="For example: Bird World"
         android:background="@drawable/bg_searchview"
         android:drawableStart="@drawable/ic_baseline_search"
         android:drawableLeft="@drawable/ic_baseline_search"
         android:drawablePadding="4dp"
+        android:hint="For example: Bird World"
         android:paddingLeft="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchLocationTxt" />
@@ -159,42 +152,44 @@
         app:layout_constraintTop_toTopOf="@+id/locationSearchView"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/locationNameBtn"
-        android:layout_width="86dp"
-        android:layout_height="36dp"
+    <RadioGroup
+        android:id="@+id/loctionRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_searchview"
-        android:text="name"
-        android:textColor="@color/yellow"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/characterNameBtn"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@+id/characterNameBtn"
-        app:layout_constraintTop_toBottomOf="@+id/locationSearchView" />
+        android:orientation="horizontal"
+        android:checkedButton="@id/locationNameBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationSearchView">
 
-    <Button
-        android:id="@+id/locationTypeBtn"
-        android:layout_width="86dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_searchview"
-        android:text="Type"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/characterStatusBtn"
-        app:layout_constraintStart_toStartOf="@+id/characterStatusBtn"
-        app:layout_constraintTop_toBottomOf="@+id/locationSearchView" />
+        <RadioButton
+            android:id="@+id/locationNameBtn"
+            android:layout_width="86dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_searchview"
+            android:text="Name"
+            android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/locationDimensionBtn"
-        android:layout_width="110dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_searchview"
-        android:text="Dimension"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/characterSpecieBtn"
-        app:layout_constraintTop_toBottomOf="@+id/locationSearchView" />
+        <RadioButton
+            android:id="@+id/locationTypeBtn"
+            android:layout_width="86dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_searchview"
+            android:text="Type"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/locationDimensionBtn"
+            android:layout_width="110dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_searchview"
+            android:text="Dimension"
+            android:textSize="12sp" />
+    </RadioGroup>
+
 
     <TextView
         android:id="@+id/searchEpisode"
@@ -205,7 +200,7 @@
         android:layout_marginTop="56dp"
         android:text="Search Episode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationNameBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/loctionRadioGroup" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/episodeSearchView"
@@ -214,15 +209,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
-        android:hint="For example: Pickle Rick "
         android:background="@drawable/bg_searchview"
         android:drawableLeft="@drawable/ic_baseline_search"
         android:drawablePadding="6dp"
+        android:hint="For example: Pickle Rick "
         android:paddingLeft="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchEpisode">
+        app:layout_constraintTop_toBottomOf="@+id/searchEpisode" />
 
-    </androidx.appcompat.widget.AppCompatEditText>
 
     <com.google.android.material.button.MaterialButton
 
@@ -241,31 +235,37 @@
         app:layout_constraintStart_toEndOf="@+id/episodeSearchView"
         app:layout_constraintTop_toTopOf="@+id/episodeSearchView" />
 
-    <Button
-        android:id="@+id/episodeNameBtn"
-        android:layout_width="86dp"
-        android:layout_height="36dp"
+    <RadioGroup
+        android:id="@+id/searchEpisodeRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_searchview"
-        android:text="name"
-        android:textColor="@color/yellow"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/locationNameBtn"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@+id/locationNameBtn"
-        app:layout_constraintTop_toBottomOf="@+id/episodeSearchView" />
+        android:orientation="horizontal"
+        android:checkedButton="@id/episodeNameBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/episodeSearchView">
 
-    <Button
-        android:id="@+id/episodeEpisodeBtn"
-        android:layout_width="90dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_searchview"
-        android:text="Episode"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/locationTypeBtn"
-        app:layout_constraintStart_toStartOf="@+id/locationTypeBtn"
-        app:layout_constraintTop_toBottomOf="@+id/episodeSearchView" />
+
+        <RadioButton
+            android:id="@+id/episodeNameBtn"
+            android:layout_width="86dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_searchview"
+            android:text="Name"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/episodeEpisodeBtn"
+            android:layout_width="90dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_searchview"
+            android:text="Episode"
+            android:textSize="12sp" />
+
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
