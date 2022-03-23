@@ -43,6 +43,12 @@ class HomeFragment : Fragment() {
         viewModel.getLocation(type = "io")
         viewModel.getEpisode(episode = "S04E09")
 
+       val radioCharacterState: String = "name"
+       val radioLocationState: String = "name"
+       val radioEpisodeState: String = "name"
+
+
+
         setUpCharacterObserver()
         setUpLocationObserver()
         setUpEpisodeObserver()
@@ -50,6 +56,30 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
         }
 
+        fun radioButtonsSetter() {
+            binding.apply {
+                characterRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+                    when (checkedId) {
+                        R.id.characterNameBtn -> radioCharacterState == "name"
+                        R.id.characterStatusBtn -> radioCharacterState == "status"
+                        R.id.characterSpecieBtn -> radioCharacterState == "specie"
+                        R.id.characterGenderBtn -> radioCharacterState == "gender"
+                    }
+                }
+            }
+        }
+        fun getCharacterInput(): String = binding.characterSearchView.text.toString()
+
+        radioButtonsSetter()
+
+        fun searchCharacter(textInput: String, filter: String){
+            viewModel.getCharacter(textInput)
+        }
+
+        binding.characterSearchBtn.setOnClickListener{
+            val textInput = getCharacterInput()
+            searchCharacter(textInput, radioCharacterState)
+        }
     }
 
     private fun setSearchButtons() {
@@ -59,7 +89,6 @@ class HomeFragment : Fragment() {
                 viewModel.getCharacter()
             }
         }
-
     }
 
     private fun setUpCharacterObserver(){
@@ -112,5 +141,6 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
 
 }
