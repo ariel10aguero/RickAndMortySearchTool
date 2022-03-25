@@ -40,8 +40,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val charMap = mapOf("type" to "alien")
         viewModel.getLocation(type = "io")
         viewModel.getEpisode(episode = "S04E09")
+        viewModel.getCharacter(charMap)
 
        val radioCharacterState: String = "name"
        val radioLocationState: String = "name"
@@ -73,7 +75,6 @@ class HomeFragment : Fragment() {
         radioButtonsSetter()
 
         fun searchCharacter(textInput: String, filter: String){
-            viewModel.getCharacter(textInput)
         }
 
         binding.characterSearchBtn.setOnClickListener{
@@ -86,7 +87,6 @@ class HomeFragment : Fragment() {
         binding.apply {
             characterSearchBtn.setOnClickListener {
                 val userInput = characterSearchView.text.toString()
-                viewModel.getCharacter()
             }
         }
     }

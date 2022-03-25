@@ -5,18 +5,13 @@ import com.example.rickandmortyapi.data.model.EpisodeResponse
 import com.example.rickandmortyapi.data.model.LocationResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.http.QueryMap
 
 
 interface WebService {
 
    @GET("character/")
-   suspend fun getCharacter(
-           @Query ("name") name: String?,
-           @Query("status") status: String?,
-           @Query("species") species: String?,
-           @Query("type") type: String?,
-           @Query("gender") gender: String?,
-
+   suspend fun getCharacter(@QueryMap param: Map<String, String>
    ): CharacterResponse
 
    @GET("location/")
@@ -35,3 +30,9 @@ interface WebService {
 
 
 }
+//
+//@Query ("name") name: String?,
+//@Query("status") status: String?,
+//@Query("species") species: String?,
+//@Query("type") type: String?,
+//@Query("gender") gender: String?

@@ -33,9 +33,9 @@ class MainViewModel @Inject constructor(private val repo: MainRepository) : View
 
 
 
-    fun getCharacter(name: String? = null, status: String? = null, species: String? = null, type: String? = null, gender: String? = null) {
+    fun getCharacter(param: Map<String, String>) {
         viewModelScope.launch {
-            repo.getCharacter(name, status, species, type, gender).onEach {character ->
+            repo.getCharacter(param).onEach {character ->
                 _characterState.value = character
             }.launchIn(viewModelScope)
         }
