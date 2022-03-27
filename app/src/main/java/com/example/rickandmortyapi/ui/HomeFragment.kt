@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -23,6 +24,9 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,42 +49,39 @@ class HomeFragment : Fragment() {
         viewModel.getEpisode(episode = "S04E09")
         viewModel.getCharacter(charMap)
 
-       val radioCharacterState: String = "name"
-       val radioLocationState: String = "name"
-       val radioEpisodeState: String = "name"
-
-
+        var filterCharacter: String = "name"
+        var filterLocation: String = "name"
+        var filterEpisode: String = "name"
 
         setUpCharacterObserver()
         setUpLocationObserver()
         setUpEpisodeObserver()
-        binding.characterSearchBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
-        }
 
-        fun radioButtonsSetter() {
-            binding.apply {
-                characterRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-                    when (checkedId) {
-                        R.id.characterNameBtn -> radioCharacterState == "name"
-                        R.id.characterStatusBtn -> radioCharacterState == "status"
-                        R.id.characterSpecieBtn -> radioCharacterState == "specie"
-                        R.id.characterGenderBtn -> radioCharacterState == "gender"
-                    }
+        binding.apply {
+            characterRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+                when(checkedId){
+                    characterNameBtn.id -> filterCharacter = "name"
+                    characterStatusBtn.id -> filterCharacter = "status"
+                    characterSpecieBtn.id -> filterCharacter = "specie"
+                    characterGenderBtn.id -> filterCharacter = "gender"
                 }
             }
         }
-        fun getCharacterInput(): String = binding.characterSearchView.text.toString()
 
-        radioButtonsSetter()
 
-        fun searchCharacter(textInput: String, filter: String){
+        fun searchCharacter(textInput: String, filterValue: String){
+            val query = mapOf(filterValue to textInput)
+            viewModel.getCharacter(query)
         }
 
-        binding.characterSearchBtn.setOnClickListener{
-            val textInput = getCharacterInput()
-            searchCharacter(textInput, radioCharacterState)
+        binding.apply {
+            characterSearchBtn.setOnClickListener {
+                val textInput = characterSearchView.text.toString()
+                searchCharacter(textInput, filterCharacter)
+//                findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
+            }
         }
+
     }
 
     private fun setSearchButtons() {
