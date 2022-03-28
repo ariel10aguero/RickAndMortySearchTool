@@ -1,6 +1,5 @@
 package com.example.rickandmortyapi.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,9 +32,9 @@ class MainViewModel @Inject constructor(private val repo: MainRepository) : View
 
 
 
-    fun getCharacter(param: Map<String, String>) {
+    fun getCharacter(query: Map<String, String>) {
         viewModelScope.launch {
-            repo.getCharacter(param).onEach {character ->
+            repo.getCharacter(query).onEach { character ->
                 _characterState.value = character
             }.launchIn(viewModelScope)
         }

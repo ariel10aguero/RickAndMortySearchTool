@@ -11,7 +11,7 @@ import retrofit2.http.QueryMap
 interface WebService {
 
    @GET("character/")
-   suspend fun getCharacter(@QueryMap param: Map<String, String>
+   suspend fun getCharacter(@QueryMap query: Map<String, String>
    ): CharacterResponse
 
    @GET("location/")

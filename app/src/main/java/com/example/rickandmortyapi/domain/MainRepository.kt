@@ -17,11 +17,11 @@ class MainRepository @Inject constructor(
 
 
     override suspend fun getCharacter(
-        param: Map<String, String>
+        query: Map<String, String>
     ): Flow<DataState<CharacterResponse>> = flow {
         emit(DataState.Loading)
         try {
-            val character = networkData.getCharacter(param)
+            val character = networkData.getCharacter(query)
             emit(DataState.Success(character))
         } catch (e: Exception) {
             emit(DataState.Error(e))

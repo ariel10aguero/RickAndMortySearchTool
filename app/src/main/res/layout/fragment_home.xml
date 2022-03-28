@@ -84,7 +84,7 @@
             android:layout_width="86dp"
             android:layout_height="36dp"
             android:background="@drawable/bg_searchview"
-            android:text="status"
+            android:text="Status"
             android:textSize="12sp" />
 
         <RadioButton
@@ -92,7 +92,7 @@
             android:layout_width="86dp"
             android:layout_height="36dp"
             android:background="@drawable/bg_searchview"
-            android:text="Specie"
+            android:text="Species"
             android:textSize="12sp" />
 
         <RadioButton

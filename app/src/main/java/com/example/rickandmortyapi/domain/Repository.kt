@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface Repository {
 
-    suspend fun getCharacter(param: Map<String, String>): Flow<DataState<CharacterResponse>>
+    suspend fun getCharacter(query: Map<String, String>): Flow<DataState<CharacterResponse>>
 
 
     suspend fun getLocation(name: String?,
