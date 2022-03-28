@@ -78,14 +78,27 @@ class HomeFragment : Fragment() {
         fun searchCharacter() {
             binding.apply {
                 characterSearchBtn.setOnClickListener {
-                    val textInput = characterSearchView.text.toString()
-                    val query = mapOf(filterCharacter to textInput)
+                    val userInput = characterSearchView.text.toString()
+                    val query = mapOf(filterCharacter to userInput)
                     viewModel.getCharacter(query)
 //                findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
                 }
             }
         }
         searchCharacter()
+
+        fun searchLocation(){
+            binding.apply {
+                locationSearchBtn.setOnClickListener {
+                    val userInput = locationSearchView.text.toString()
+                    val query = mapOf(filterLocation to userInput)
+                    viewModel.getLocation(query)
+                }
+            }
+        }
+        searchLocation()
+
+
     }
 
     private fun setSearchButtons() {
