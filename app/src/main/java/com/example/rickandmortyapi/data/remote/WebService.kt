@@ -15,17 +15,11 @@ interface WebService {
    ): CharacterResponse
 
    @GET("location/")
-   suspend fun getLocation(
-           @Query ("name") name: String?,
-           @Query("type") type: String?,
-           @Query("dimension") dimension: String?,
-
+   suspend fun getLocation(@QueryMap query: Map<String, String>
    ): LocationResponse
 
    @GET("episode/")
-   suspend fun getEpisode(
-       @Query("name") name: String?,
-       @Query("episode") episode: String?
+   suspend fun getEpisode(@QueryMap query: Map<String, String>
    ): EpisodeResponse
 
 

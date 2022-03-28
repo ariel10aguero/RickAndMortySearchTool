@@ -11,12 +11,10 @@ interface Repository {
     suspend fun getCharacter(query: Map<String, String>): Flow<DataState<CharacterResponse>>
 
 
-    suspend fun getLocation(name: String?,
-                            type: String?,
-                            dimension: String?): Flow<DataState<LocationResponse>>
+    suspend fun getLocation(query: Map<String, String>): Flow<DataState<LocationResponse>>
 
 
-    suspend fun getEpisode(name: String?, episode: String?): Flow<DataState<EpisodeResponse>>
+    suspend fun getEpisode(query: Map<String, String>): Flow<DataState<EpisodeResponse>>
 
 
 

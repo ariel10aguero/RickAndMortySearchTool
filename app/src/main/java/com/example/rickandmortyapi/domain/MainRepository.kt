@@ -29,13 +29,11 @@ class MainRepository @Inject constructor(
     }
 
     override suspend fun getLocation(
-        name: String?,
-        type: String?,
-        dimension: String?
+        query: Map<String, String>
     ): Flow<DataState<LocationResponse>> = flow {
         emit(DataState.Loading)
         try {
-            val location = networkData.getLocation(name, type, dimension)
+            val location = networkData.getLocation(query)
             emit(DataState.Success(location))
         } catch (e: Exception) {
             emit(DataState.Error(e))
@@ -43,12 +41,11 @@ class MainRepository @Inject constructor(
     }
 
     override suspend fun getEpisode(
-        name: String?,
-        episode: String?
+        query: Map<String, String>
     ): Flow<DataState<EpisodeResponse>> = flow{
         emit(DataState.Loading)
         try {
-            val episode = networkData.getEpisode(name, episode)
+            val episode = networkData.getEpisode(query)
             emit(DataState.Success(episode))
         } catch (e: Exception){
             emit(DataState.Error(e))

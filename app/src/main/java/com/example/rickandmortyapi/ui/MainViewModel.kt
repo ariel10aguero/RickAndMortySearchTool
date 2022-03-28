@@ -40,17 +40,17 @@ class MainViewModel @Inject constructor(private val repo: MainRepository) : View
         }
     }
 
-    fun getLocation(name: String? = null, type: String? = null, dimension: String? = null){
+    fun getLocation(query: Map<String, String>){
         viewModelScope.launch {
-            repo.getLocation(name, type, dimension).onEach { location ->
+            repo.getLocation(query).onEach { location ->
                 _locationState.value = location
             }.launchIn(viewModelScope)
         }
     }
 
-    fun getEpisode(name: String? = null, episode: String? = null){
+    fun getEpisode(query: Map<String, String>){
         viewModelScope.launch {
-            repo.getEpisode(name, episode).onEach { episode ->
+            repo.getEpisode(query).onEach { episode ->
                 _episodeState.value = episode
             }.launchIn(viewModelScope)
         }

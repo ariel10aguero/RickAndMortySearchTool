@@ -39,8 +39,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getLocation(type = "io")
-        viewModel.getEpisode(episode = "S04E09")
 
         var filterCharacter: String = "name"
         var filterLocation: String = "name"
@@ -49,7 +47,6 @@ class HomeFragment : Fragment() {
         setUpCharacterObserver()
         setUpLocationObserver()
         setUpEpisodeObserver()
-
 
         fun radioButtonsFilters() {
             binding.apply {
@@ -78,21 +75,17 @@ class HomeFragment : Fragment() {
         }
         radioButtonsFilters()
 
-
-        fun searchCharacter(textInput: String, filterName: String){
-            val query = mapOf(filterName to textInput)
-            viewModel.getCharacter(query)
-        }
-
-
-        binding.apply {
-            characterSearchBtn.setOnClickListener {
-                val textInput = characterSearchView.text.toString()
-                searchCharacter(textInput, filterCharacter)
+        fun searchCharacter() {
+            binding.apply {
+                characterSearchBtn.setOnClickListener {
+                    val textInput = characterSearchView.text.toString()
+                    val query = mapOf(filterCharacter to textInput)
+                    viewModel.getCharacter(query)
 //                findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
+                }
             }
         }
-
+        searchCharacter()
     }
 
     private fun setSearchButtons() {
