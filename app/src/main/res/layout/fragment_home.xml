@@ -153,7 +153,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <RadioGroup
-        android:id="@+id/loctionRadioGroup"
+        android:id="@+id/locationRadioGroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -200,7 +200,7 @@
         android:layout_marginTop="56dp"
         android:text="Search Episode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loctionRadioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/locationRadioGroup" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/episodeSearchView"
@@ -236,7 +236,7 @@
         app:layout_constraintTop_toTopOf="@+id/episodeSearchView" />
 
     <RadioGroup
-        android:id="@+id/searchEpisodeRadioGroup"
+        android:id="@+id/episodeRadioGroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

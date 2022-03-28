@@ -26,8 +26,6 @@ class HomeFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -44,10 +42,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val charMap = mapOf("type" to "alien")
         viewModel.getLocation(type = "io")
         viewModel.getEpisode(episode = "S04E09")
-        viewModel.getCharacter(charMap)
 
         var filterCharacter: String = "name"
         var filterLocation: String = "name"
@@ -57,22 +53,40 @@ class HomeFragment : Fragment() {
         setUpLocationObserver()
         setUpEpisodeObserver()
 
-        binding.apply {
-            characterRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-                when(checkedId){
-                    characterNameBtn.id -> filterCharacter = "name"
-                    characterStatusBtn.id -> filterCharacter = "status"
-                    characterSpecieBtn.id -> filterCharacter = "specie"
-                    characterGenderBtn.id -> filterCharacter = "gender"
+
+        fun radioButtonsFilters() {
+            binding.apply {
+                characterRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+                    when (checkedId) {
+                        characterNameBtn.id -> filterCharacter = "name"
+                        characterStatusBtn.id -> filterCharacter = "status"
+                        characterSpecieBtn.id -> filterCharacter = "species"
+                        characterGenderBtn.id -> filterCharacter = "gender"
+                    }
+                }
+                locationRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+                    when (checkedId) {
+                        locationNameBtn.id -> filterLocation = "name"
+                        locationTypeBtn.id -> filterLocation = "type"
+                        locationDimensionBtn.id -> filterLocation = "dimension"
+                    }
+                }
+                episodeRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+                    when (checkedId) {
+                        episodeNameBtn.id -> filterEpisode = "name"
+                        episodeEpisodeBtn.id -> filterEpisode = "episode"
+                    }
                 }
             }
         }
+        radioButtonsFilters()
 
 
         fun searchCharacter(textInput: String, filterValue: String){
             val query = mapOf(filterValue to textInput)
             viewModel.getCharacter(query)
         }
+
 
         binding.apply {
             characterSearchBtn.setOnClickListener {
