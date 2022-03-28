@@ -98,16 +98,19 @@ class HomeFragment : Fragment() {
         }
         searchLocation()
 
-
-    }
-
-    private fun setSearchButtons() {
-        binding.apply {
-            characterSearchBtn.setOnClickListener {
-                val userInput = characterSearchView.text.toString()
+        fun searchEpisode(){
+            binding.apply {
+                episodeSearchBtn.setOnClickListener {
+                    val userInput = episodeSearchView.text.toString()
+                    val query = mapOf(filterEpisode to userInput)
+                    viewModel.getEpisode(query)
+                }
             }
         }
+        searchEpisode()
+
     }
+
 
     private fun setUpCharacterObserver(){
         viewModel.characterState.observe(viewLifecycleOwner, Observer {characterState ->
