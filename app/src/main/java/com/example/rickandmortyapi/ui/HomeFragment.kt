@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.data.model.CharacterResponse
 import com.example.rickandmortyapi.data.model.EpisodeResponse
 import com.example.rickandmortyapi.data.model.LocationResponse
@@ -20,7 +23,7 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by activityViewModels<MainViewModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,12 +42,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        Log.d("homevm", "$viewModel")
         var filterCharacter: String = "name"
         var filterLocation: String = "name"
         var filterEpisode: String = "name"
 
-        setUpCharacterObserver()
         setUpLocationObserver()
         setUpEpisodeObserver()
 
@@ -81,7 +83,7 @@ class HomeFragment : Fragment() {
                     val userInput = characterSearchView.text.toString()
                     val query = mapOf(filterCharacter to userInput)
                     viewModel.getCharacter(query)
-//                findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
+                    findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
                 }
             }
         }
@@ -112,30 +114,11 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun setUpCharacterObserver(){
-        viewModel.characterState.observe(viewLifecycleOwner, Observer {characterState ->
-            when(characterState){
-                is DataState.Loading -> {
-                    Log.d("loading", "Loading Character")
-                }
-                is DataState.Success<CharacterResponse> -> {
-                    // Navigate
-
-                    Log.d("character", "${characterState.data.results}")
-                }
-                is DataState.Error -> {
-                    Log.d("error", "${characterState.exception}")
-                }
-            }
-        })
-    }
-
     private fun setUpLocationObserver(){
         viewModel.locationState.observe(viewLifecycleOwner, Observer {locationState ->
             when(locationState){
                 is DataState.Loading -> {
                     Log.d("loading Location", "Loading Location")
-
                 }
                 is DataState.Success<LocationResponse> -> {
                     Log.d("location", "${locationState.data.results}")
