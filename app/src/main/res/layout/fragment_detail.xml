@@ -54,7 +54,6 @@
         android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/oi"
         android:translationZ="100dp"
         app:layout_constraintBottom_toBottomOf="@id/header"
         app:layout_constraintEnd_toEndOf="parent"

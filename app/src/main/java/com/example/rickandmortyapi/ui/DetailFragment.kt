@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.data.model.Character
 import com.example.rickandmortyapi.data.model.CharacterResponse
@@ -74,7 +75,10 @@ class DetailFragment : Fragment() {
             genderTxt.text = character.gender
             originTxt.text = character.origin["name"]
             locationTxt.text = character.location["name"]
-            Glide.with(this@DetailFragment).load(character.image).into(binding.imageView)
+            Glide.with(this@DetailFragment)
+                .load(character.image)
+                .transition(DrawableTransitionOptions.withCrossFade(500))
+                .into(binding.imageView)
         }
     }
     private fun setUpArrows(characterList: ArrayList<Character>){
