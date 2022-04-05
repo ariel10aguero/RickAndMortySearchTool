@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <TextView
-        android:id="@+id/statusTypeDateTxt"
+        android:id="@+id/detailTxtOne"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
 
     <TextView
-        android:id="@+id/specieDimEpisodeTxt"
+        android:id="@+id/detailTxtTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -97,10 +97,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statusTypeDateTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/detailTxtOne" />
 
     <TextView
-        android:id="@+id/genderTxt"
+        android:id="@+id/detailTxtThree"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -111,10 +111,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/specieDimEpisodeTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/detailTxtTwo" />
 
     <TextView
-        android:id="@+id/originTxt"
+        android:id="@+id/detailTxtFour"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -125,10 +125,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genderTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/detailTxtThree" />
 
     <TextView
-        android:id="@+id/locationTxt"
+        android:id="@+id/detailTxtFive"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -140,7 +140,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/originTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/detailTxtFour" />
 
     <Button
         android:id="@+id/backBtn"
@@ -153,7 +153,7 @@
         app:layout_constraintEnd_toStartOf="@+id/nextBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationTxt"
+        app:layout_constraintTop_toBottomOf="@+id/detailTxtFive"
         app:layout_constraintVertical_bias="0.461" />
 
     <Button
@@ -167,7 +167,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/backBtn"
-        app:layout_constraintTop_toBottomOf="@+id/locationTxt"
+        app:layout_constraintTop_toBottomOf="@+id/detailTxtFive"
         app:layout_constraintVertical_bias="0.461" />
 
 

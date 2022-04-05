@@ -71,10 +71,11 @@ class DetailFragment : Fragment() {
     private fun bindCharacter(character: Character){
         binding.apply {
             nameTxt.text = character.name
-            specieDimEpisodeTxt.text = character.species
-            genderTxt.text = character.gender
-            originTxt.text = character.origin["name"]
-            locationTxt.text = character.location["name"]
+            detailTxtOne.text = "Status: ${character.status}"
+            detailTxtTwo.text = "Spicies ${character.species}"
+            detailTxtThree.text = "Gender: ${character.gender}"
+            detailTxtFour.text = "Origin: ${character.origin["name"]}"
+            detailTxtFive.text = "Location: ${character.location["name"]}"
             Glide.with(this@DetailFragment)
                 .load(character.image)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
