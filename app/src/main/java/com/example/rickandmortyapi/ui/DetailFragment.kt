@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.data.model.Character
 import com.example.rickandmortyapi.data.model.CharacterResponse
@@ -44,7 +45,6 @@ class DetailFragment : Fragment() {
         Log.d("detailvm", "$viewModel")
 
         setUpCharacterObserver()
-
     }
 
 
@@ -74,6 +74,7 @@ class DetailFragment : Fragment() {
             genderTxt.text = character.gender
             originTxt.text = character.origin["name"]
             locationTxt.text = character.location["name"]
+            Glide.with(this@DetailFragment).load(character.image).into(binding.imageView)
         }
     }
     private fun setUpArrows(characterList: ArrayList<Character>){
@@ -82,6 +83,12 @@ class DetailFragment : Fragment() {
             nextBtn.setOnClickListener {
                 if(position < characterList.lastIndex){
                     position++
+                    bindCharacter(characterList[position])
+                }
+            }
+            backBtn.setOnClickListener {
+                if(position > 0){
+                    position--
                     bindCharacter(characterList[position])
                 }
             }
