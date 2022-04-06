@@ -8,14 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.data.model.*
 import com.example.rickandmortyapi.databinding.FragmentDetailBinding
-import com.example.rickandmortyapi.databinding.FragmentHomeBinding
 import com.example.rickandmortyapi.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -64,7 +62,7 @@ class DetailFragment : Fragment() {
                 is DataState.Success<CharacterResponse> -> {
                     val result = characterState.data.results
                     bindCharacter(result[0])
-                    setUpArrows(result)
+                    setUpCharacterArrows(result)
                     Log.d("character", "${characterState.data.results}")
                 }
                 is DataState.Error -> {
@@ -83,6 +81,7 @@ class DetailFragment : Fragment() {
                 is DataState.Success<LocationResponse> -> {
                     val result = locationState.data.results
                     bindLocation(result[0])
+                    setUpLocationArrows(result)
                     Log.d("location", "${locationState.data.results}")
                 }
                 is DataState.Error -> {
@@ -126,11 +125,11 @@ class DetailFragment : Fragment() {
         binding.apply {
             nameTxt.text = location.name
             detailTxtOne.text = "Type: ${location.type}"
-            detailTxtTwo.text = "Dimension: ${location.residents}"
+            detailTxtTwo.text = "Dimension: ${location.dimension}"
         }
     }
 
-    private fun setUpArrows(characterList: ArrayList<Character>){
+    private fun setUpCharacterArrows(characterList: ArrayList<Character>){
         var position = 0
         binding.apply {
             nextBtn.setOnClickListener {
@@ -143,6 +142,24 @@ class DetailFragment : Fragment() {
                 if(position > 0){
                     position--
                     bindCharacter(characterList[position])
+                }
+            }
+        }
+    }
+
+    private fun setUpLocationArrows(locationList: ArrayList<Location>){
+        var position = 0
+        binding.apply {
+            nextBtn.setOnClickListener {
+                if(position < locationList.lastIndex){
+                    position++
+                    bindLocation(locationList[position])
+                }
+            }
+            backBtn.setOnClickListener {
+                if(position > 0){
+                    position--
+                    bindLocation(locationList[position])
                 }
             }
         }
