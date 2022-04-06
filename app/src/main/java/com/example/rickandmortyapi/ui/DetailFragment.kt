@@ -9,11 +9,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.data.model.Character
 import com.example.rickandmortyapi.data.model.CharacterResponse
+import com.example.rickandmortyapi.data.model.EpisodeResponse
+import com.example.rickandmortyapi.data.model.LocationResponse
 import com.example.rickandmortyapi.databinding.FragmentDetailBinding
 import com.example.rickandmortyapi.databinding.FragmentHomeBinding
 import com.example.rickandmortyapi.util.DataState
@@ -46,6 +49,12 @@ class DetailFragment : Fragment() {
         Log.d("detailvm", "$viewModel")
 
         setUpCharacterObserver()
+        setUpLocationObserver()
+        setUpEpisodeObserver()
+
+        binding.arrowBack.setOnClickListener {
+            findNavController().navigate(R.id.action_detailFragment_to_homeFragment)
+        }
     }
 
 
@@ -63,6 +72,38 @@ class DetailFragment : Fragment() {
                 }
                 is DataState.Error -> {
                     Log.d("error", "${characterState.exception}")
+                }
+            }
+        })
+    }
+
+    private fun setUpLocationObserver(){
+        viewModel.locationState.observe(viewLifecycleOwner, Observer {locationState ->
+            when(locationState){
+                is DataState.Loading -> {
+                    Log.d("loading Location", "Loading Location")
+                }
+                is DataState.Success<LocationResponse> -> {
+                    Log.d("location", "${locationState.data.results}")
+                }
+                is DataState.Error -> {
+                    Log.d("errorLocation", "${locationState.exception}")
+                }
+            }
+        })
+    }
+
+    private fun setUpEpisodeObserver(){
+        viewModel.episodeState.observe(viewLifecycleOwner, Observer {episodeState ->
+            when(episodeState){
+                is DataState.Loading -> {
+                    Log.d("loading", "Loading Episode")
+                }
+                is DataState.Success<EpisodeResponse> -> {
+                    Log.d("episode", "${episodeState.data.results}")
+                }
+                is DataState.Error -> {
+                    Log.d("error", "${episodeState.exception}")
                 }
             }
         })

@@ -47,8 +47,6 @@ class HomeFragment : Fragment() {
         var filterLocation: String = "name"
         var filterEpisode: String = "name"
 
-        setUpLocationObserver()
-        setUpEpisodeObserver()
 
         fun radioButtonsFilters() {
             binding.apply {
@@ -95,6 +93,7 @@ class HomeFragment : Fragment() {
                     val userInput = locationSearchView.text.toString()
                     val query = mapOf(filterLocation to userInput)
                     viewModel.getLocation(query)
+                    findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
                 }
             }
         }
@@ -106,45 +105,10 @@ class HomeFragment : Fragment() {
                     val userInput = episodeSearchView.text.toString()
                     val query = mapOf(filterEpisode to userInput)
                     viewModel.getEpisode(query)
+                    findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
                 }
             }
         }
         searchEpisode()
-
     }
-
-
-    private fun setUpLocationObserver(){
-        viewModel.locationState.observe(viewLifecycleOwner, Observer {locationState ->
-            when(locationState){
-                is DataState.Loading -> {
-                    Log.d("loading Location", "Loading Location")
-                }
-                is DataState.Success<LocationResponse> -> {
-                    Log.d("location", "${locationState.data.results}")
-                }
-                is DataState.Error -> {
-                    Log.d("errorLocation", "${locationState.exception}")
-                }
-            }
-        })
-    }
-
-    private fun setUpEpisodeObserver(){
-        viewModel.episodeState.observe(viewLifecycleOwner, Observer {episodeState ->
-            when(episodeState){
-                is DataState.Loading -> {
-                    Log.d("loading", "Loading Episode")
-                }
-                is DataState.Success<EpisodeResponse> -> {
-                    Log.d("episode", "${episodeState.data.results}")
-                }
-                is DataState.Error -> {
-                    Log.d("error", "${episodeState.exception}")
-                }
-            }
-        })
-    }
-
-
 }
