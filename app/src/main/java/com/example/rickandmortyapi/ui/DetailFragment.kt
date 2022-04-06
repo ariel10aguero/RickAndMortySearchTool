@@ -52,7 +52,6 @@ class DetailFragment : Fragment() {
         }
     }
 
-
      private fun setUpCharacterObserver(){
         viewModel.characterState.observe(viewLifecycleOwner, Observer {characterState ->
             when(characterState){
@@ -98,6 +97,9 @@ class DetailFragment : Fragment() {
                     Log.d("loading", "Loading Episode")
                 }
                 is DataState.Success<EpisodeResponse> -> {
+                    val result = episodeState.data.results
+                    bindEpisode(result[0])
+                    setUpEpisodeArrows(result)
                     Log.d("episode", "${episodeState.data.results}")
                 }
                 is DataState.Error -> {
@@ -126,6 +128,13 @@ class DetailFragment : Fragment() {
             nameTxt.text = location.name
             detailTxtOne.text = "Type: ${location.type}"
             detailTxtTwo.text = "Dimension: ${location.dimension}"
+        }
+    }
+    private fun bindEpisode(episode: Episode){
+        binding.apply {
+            nameTxt.text = episode.name
+            detailTxtOne.text = "Air Date: ${episode.air_date}"
+            detailTxtTwo.text = "Episode ${episode.episode}"
         }
     }
 
@@ -164,5 +173,24 @@ class DetailFragment : Fragment() {
             }
         }
     }
+
+    private fun setUpEpisodeArrows(episodeList: ArrayList<Episode>){
+        var position = 0
+        binding.apply {
+            nextBtn.setOnClickListener {
+                if(position < episodeList.lastIndex){
+                    position++
+                    bindEpisode(episodeList[position])
+                }
+            }
+            backBtn.setOnClickListener {
+                if(position > 0){
+                    position--
+                    bindEpisode(episodeList[position])
+                }
+            }
+        }
+    }
+
 }
 
