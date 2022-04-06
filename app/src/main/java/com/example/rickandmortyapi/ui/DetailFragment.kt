@@ -13,10 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.rickandmortyapi.R
-import com.example.rickandmortyapi.data.model.Character
-import com.example.rickandmortyapi.data.model.CharacterResponse
-import com.example.rickandmortyapi.data.model.EpisodeResponse
-import com.example.rickandmortyapi.data.model.LocationResponse
+import com.example.rickandmortyapi.data.model.*
 import com.example.rickandmortyapi.databinding.FragmentDetailBinding
 import com.example.rickandmortyapi.databinding.FragmentHomeBinding
 import com.example.rickandmortyapi.util.DataState
@@ -84,6 +81,8 @@ class DetailFragment : Fragment() {
                     Log.d("loading Location", "Loading Location")
                 }
                 is DataState.Success<LocationResponse> -> {
+                    val result = locationState.data.results
+                    bindLocation(result[0])
                     Log.d("location", "${locationState.data.results}")
                 }
                 is DataState.Error -> {
@@ -123,6 +122,14 @@ class DetailFragment : Fragment() {
                 .into(binding.imageView)
         }
     }
+    private fun bindLocation(location: Location){
+        binding.apply {
+            nameTxt.text = location.name
+            detailTxtOne.text = "Type: ${location.type}"
+            detailTxtTwo.text = "Dimension: ${location.residents}"
+        }
+    }
+
     private fun setUpArrows(characterList: ArrayList<Character>){
         var position = 0
         binding.apply {
