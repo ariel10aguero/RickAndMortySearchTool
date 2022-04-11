@@ -59,6 +59,7 @@ class DetailFragment : Fragment() {
                     Log.d("loading", "Loading Character")
                 }
                 is DataState.Success<CharacterResponse> -> {
+                    binding.progressBar.visibility = View.GONE
                     val result = characterState.data.results
                     bindCharacter(result[0])
                     setUpCharacterArrows(result)
@@ -78,6 +79,8 @@ class DetailFragment : Fragment() {
                     Log.d("loading Location", "Loading Location")
                 }
                 is DataState.Success<LocationResponse> -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.imageView.setImageResource(R.drawable.location_detail)
                     val result = locationState.data.results
                     bindLocation(result[0])
                     setUpLocationArrows(result)
@@ -97,6 +100,8 @@ class DetailFragment : Fragment() {
                     Log.d("loading", "Loading Episode")
                 }
                 is DataState.Success<EpisodeResponse> -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.imageView.setImageResource(R.drawable.episode_detail)
                     val result = episodeState.data.results
                     bindEpisode(result[0])
                     setUpEpisodeArrows(result)
@@ -117,6 +122,7 @@ class DetailFragment : Fragment() {
             detailTxtThree.text = "Gender: ${character.gender}"
             detailTxtFour.text = "Origin: ${character.origin["name"]}"
             detailTxtFive.text = "Location: ${character.location["name"]}"
+            // Asegurarse de limpiar la vista despues de haber bindeado
             Glide.with(this@DetailFragment)
                 .load(character.image)
                 .transition(DrawableTransitionOptions.withCrossFade(500))

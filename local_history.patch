@@ -1,0 +1,32 @@
+Index: app/src/main/java/com/example/rickandmortyapi/util/LoadingDialog.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/rickandmortyapi/util/LoadingDialog.kt b/app/src/main/java/com/example/rickandmortyapi/util/LoadingDialog.kt
+--- a/app/src/main/java/com/example/rickandmortyapi/util/LoadingDialog.kt	(date 1649681168482)
++++ b/app/src/main/java/com/example/rickandmortyapi/util/LoadingDialog.kt	(date 1649681168482)
+@@ -1,18 +1,19 @@
+ package com.example.rickandmortyapi.util
+ 
++import android.app.Activity
+ import android.app.AlertDialog
+ import androidx.fragment.app.Fragment
+ import com.example.rickandmortyapi.R
+ 
+-class LoadingDialog(val fragment: Fragment) {
++class LoadingDialog(val mActivity: Activity) {
+     private lateinit var isDialog: AlertDialog
+ 
+     fun startLoading(){
+-        val inflater = fragment.layoutInflater
++        val inflater = mActivity.layoutInflater
+         val dialogView = inflater.inflate(R.layout.loading_dialog, null)
+-        val builder = AlertDialog.Builder(fragment.requireContext())
++        val builder = AlertDialog.Builder(mActivity)
+         builder.setView(dialogView)
+-        builder.setCancelable(true)
++        builder.setCancelable(false)
+         isDialog = builder.create()
+         isDialog.show()
+     }
