@@ -56,10 +56,11 @@ class DetailFragment : Fragment() {
         viewModel.characterState.observe(viewLifecycleOwner, Observer {characterState ->
             when(characterState){
                 is DataState.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
                     Log.d("loading", "Loading Character")
                 }
                 is DataState.Success<CharacterResponse> -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.visibility = View.INVISIBLE
                     binding.titleTypeTxt.text = "Character"
                     val result = characterState.data.results
                     bindCharacter(result[0])
@@ -67,7 +68,6 @@ class DetailFragment : Fragment() {
                     Log.d("character", "${characterState.data.results}")
                 }
                 is DataState.Error -> {
-                    cleanTxt()
                     binding.progressBar.visibility = View.GONE
                     binding.imageView.setImageResource(R.drawable.search_not_found)
                     binding.nameTxt.text = "Character not found"
@@ -81,10 +81,11 @@ class DetailFragment : Fragment() {
         viewModel.locationState.observe(viewLifecycleOwner, Observer {locationState ->
             when(locationState){
                 is DataState.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
                     Log.d("loading Location", "Loading Location")
                 }
                 is DataState.Success<LocationResponse> -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.visibility = View.INVISIBLE
                     binding.titleTypeTxt.text = "Location"
                     binding.imageView.setImageResource(R.drawable.location_detail)
                     val result = locationState.data.results
@@ -93,7 +94,6 @@ class DetailFragment : Fragment() {
                     Log.d("location", "${locationState.data.results}")
                 }
                 is DataState.Error -> {
-                    cleanTxt()
                     binding.progressBar.visibility = View.GONE
                     binding.imageView.setImageResource(R.drawable.search_not_found)
                     binding.nameTxt.text = "Location not found"
@@ -107,10 +107,11 @@ class DetailFragment : Fragment() {
         viewModel.episodeState.observe(viewLifecycleOwner, Observer {episodeState ->
             when(episodeState){
                 is DataState.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
                     Log.d("loading", "Loading Episode")
                 }
                 is DataState.Success<EpisodeResponse> -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.visibility = View.INVISIBLE
                     binding.titleTypeTxt.text = "Episode"
                     binding.imageView.setImageResource(R.drawable.episode_detail)
                     val result = episodeState.data.results
@@ -119,7 +120,6 @@ class DetailFragment : Fragment() {
                     Log.d("episode", "${episodeState.data.results}")
                 }
                 is DataState.Error -> {
-                    cleanTxt()
                     binding.progressBar.visibility = View.GONE
                     binding.imageView.setImageResource(R.drawable.search_not_found)
                     binding.nameTxt.text = "Episode not found"
@@ -214,13 +214,21 @@ class DetailFragment : Fragment() {
     }
 
     private fun cleanTxt(){
-        binding.titleTypeTxt.text = ""
-        binding.detailTxtOne.text = ""
-        binding.detailTxtTwo.text = ""
-        binding.detailTxtThree.text = ""
-        binding.detailTxtFour.text = ""
-        binding.detailTxtFive.text = ""
+        binding.apply {
+            imageView.setImageResource(0)
+            titleTypeTxt.text = ""
+            nameTxt.text = ""
+            detailTxtOne.text = ""
+            detailTxtTwo.text = ""
+            detailTxtThree.text = ""
+            detailTxtFour.text = ""
+            detailTxtFive.text = ""
+        }
     }
 
+    override fun onResume() {
+        cleanTxt()
+        super.onResume()
+    }
 }
 
