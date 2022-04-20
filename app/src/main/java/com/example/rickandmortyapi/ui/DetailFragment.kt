@@ -68,7 +68,7 @@ class DetailFragment : Fragment() {
                     Log.d("character", "${characterState.data.results}")
                 }
                 is DataState.Error -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.visibility = View.INVISIBLE
                     binding.imageView.setImageResource(R.drawable.search_not_found)
                     binding.nameTxt.text = "Character not found"
                     Log.d("error", "${characterState.exception}")
@@ -94,7 +94,7 @@ class DetailFragment : Fragment() {
                     Log.d("location", "${locationState.data.results}")
                 }
                 is DataState.Error -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.visibility = View.INVISIBLE
                     binding.imageView.setImageResource(R.drawable.search_not_found)
                     binding.nameTxt.text = "Location not found"
                     Log.d("errorLocation", "${locationState.exception}")
@@ -120,7 +120,7 @@ class DetailFragment : Fragment() {
                     Log.d("episode", "${episodeState.data.results}")
                 }
                 is DataState.Error -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.visibility = View.INVISIBLE
                     binding.imageView.setImageResource(R.drawable.search_not_found)
                     binding.nameTxt.text = "Episode not found"
                     Log.d("error", "${episodeState.exception}")
