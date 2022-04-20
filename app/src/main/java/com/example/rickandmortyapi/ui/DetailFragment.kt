@@ -67,6 +67,10 @@ class DetailFragment : Fragment() {
                     Log.d("character", "${characterState.data.results}")
                 }
                 is DataState.Error -> {
+                    cleanTxt()
+                    binding.progressBar.visibility = View.GONE
+                    binding.imageView.setImageResource(R.drawable.search_not_found)
+                    binding.nameTxt.text = "Character not found"
                     Log.d("error", "${characterState.exception}")
                 }
             }
@@ -89,6 +93,10 @@ class DetailFragment : Fragment() {
                     Log.d("location", "${locationState.data.results}")
                 }
                 is DataState.Error -> {
+                    cleanTxt()
+                    binding.progressBar.visibility = View.GONE
+                    binding.imageView.setImageResource(R.drawable.search_not_found)
+                    binding.nameTxt.text = "Location not found"
                     Log.d("errorLocation", "${locationState.exception}")
                 }
             }
@@ -103,7 +111,7 @@ class DetailFragment : Fragment() {
                 }
                 is DataState.Success<EpisodeResponse> -> {
                     binding.progressBar.visibility = View.GONE
-                    binding.titleTypeTxt.text = "Episode"g
+                    binding.titleTypeTxt.text = "Episode"
                     binding.imageView.setImageResource(R.drawable.episode_detail)
                     val result = episodeState.data.results
                     bindEpisode(result[0])
@@ -111,6 +119,10 @@ class DetailFragment : Fragment() {
                     Log.d("episode", "${episodeState.data.results}")
                 }
                 is DataState.Error -> {
+                    cleanTxt()
+                    binding.progressBar.visibility = View.GONE
+                    binding.imageView.setImageResource(R.drawable.search_not_found)
+                    binding.nameTxt.text = "Episode not found"
                     Log.d("error", "${episodeState.exception}")
                 }
             }
@@ -199,6 +211,15 @@ class DetailFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun cleanTxt(){
+        binding.titleTypeTxt.text = ""
+        binding.detailTxtOne.text = ""
+        binding.detailTxtTwo.text = ""
+        binding.detailTxtThree.text = ""
+        binding.detailTxtFour.text = ""
+        binding.detailTxtFive.text = ""
     }
 
 }
