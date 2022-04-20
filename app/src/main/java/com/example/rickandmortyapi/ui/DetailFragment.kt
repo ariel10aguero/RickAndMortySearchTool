@@ -60,6 +60,7 @@ class DetailFragment : Fragment() {
                 }
                 is DataState.Success<CharacterResponse> -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.titleTypeTxt.text = "Character"
                     val result = characterState.data.results
                     bindCharacter(result[0])
                     setUpCharacterArrows(result)
@@ -80,6 +81,7 @@ class DetailFragment : Fragment() {
                 }
                 is DataState.Success<LocationResponse> -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.titleTypeTxt.text = "Location"
                     binding.imageView.setImageResource(R.drawable.location_detail)
                     val result = locationState.data.results
                     bindLocation(result[0])
@@ -101,6 +103,7 @@ class DetailFragment : Fragment() {
                 }
                 is DataState.Success<EpisodeResponse> -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.titleTypeTxt.text = "Episode"g
                     binding.imageView.setImageResource(R.drawable.episode_detail)
                     val result = episodeState.data.results
                     bindEpisode(result[0])
