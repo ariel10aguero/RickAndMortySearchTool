@@ -17,3 +17,8 @@ Android app to search characters, locations and episodes from the tv show "Rick 
 - Constraint layout
 - View Binding
 - Navigation Components
+
+# Screenshots
+
+
+<img src="./screenshots/screenshot_home.jpg" width="30%" height="30%"> <img src="./screenshots/screenshot_character.jpg" width="30%" height="30%"> <img src="./screenshots/screenshot_episode.jpg" width="30%" height="30%">
